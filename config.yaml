@@ -1,0 +1,42 @@
+project:
+  name: "Remote DC Motor Speed & Position Control Digital Twin"
+  course: "ENME506"
+  sample_time_s: 0.01
+  plant_step_s: 0.001
+
+network:
+  protocol: "tcp"
+  host: "127.0.0.1"
+  tcp_port: 5000
+  udp_port: 5001
+
+motor:
+  inertia: 0.01
+  friction: 0.1
+  torque_constant: 0.01
+  armature_resistance: 1.0
+  armature_inductance: 0.5
+
+control:
+  mode: "speed"
+  setpoint:
+    speed_rad_s: 1.0
+    position_rad: 1.0
+  speed_pid:
+    kp: 100.0
+    ki: 200.0
+    kd: 10.0
+  position_pid:
+    kp: 100.0
+    ki: 20.0
+    kd: 10.0
+  voltage_limit_v: 12.0
+
+impairments:
+  delay_ms: 0
+  jitter_ms: 0
+  loss_percent: 0
+
+logging:
+  directory: "logs"
+  csv_prefix: "run"
